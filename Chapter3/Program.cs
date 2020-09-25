@@ -13,28 +13,36 @@ namespace Chapter3
     {
         static void Main(string[] args)
         {
-            var names = new List<string>
-            {
-                "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Moscow","Warsaw","Hong Kong",
-            };
+            #region
+            //var names = new List<string>
+            //{
+            //    "Tokyo","New Delhi","Bangkok","London","Paris","Berlin","Moscow","Warsaw","Hong Kong",
+            //};
 
-            var query = names.Where(s => s.Length <= 5).ToArray();
-            foreach (var item in query)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("---------");
+            //var query = names.Where(s => s.Length <= 5).ToArray();
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("---------");
 
-            names[0] = "Osaka";
-            foreach (var item in query)
-            {
-                Console.WriteLine(item);
-            }
+            //names[0] = "Osaka";
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item);
+            //}
             //IEnumerable<string> query = names.Where(s => s.Length <= 5);
             //foreach (string s in query)
             //{
             //    Console.WriteLine(s);
             //}
+            #endregion
+
+            var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
+
+            var query = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
+                Console.WriteLine(query);
+
         }
     }
 }
