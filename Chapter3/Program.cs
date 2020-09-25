@@ -43,10 +43,19 @@ namespace Chapter3
             //var query = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
             //    Console.WriteLine(query);
             #endregion
+            #region
+            //var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
+
+            //numbers.ForEach(s => Console.WriteLine(s / 2));
+            #endregion
 
             var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-            numbers.ForEach(s => Console.WriteLine(s / 2));
+            IEnumerable<int> query = numbers.Where(s => s > 50);
+            foreach (int s in query)
+            {
+                Console.WriteLine(s);
+            }
         }
     }
 }
