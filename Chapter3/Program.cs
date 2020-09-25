@@ -48,10 +48,19 @@ namespace Chapter3
 
             //numbers.ForEach(s => Console.WriteLine(s / 2));
             #endregion
+            #region
+            //var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
+
+            //IEnumerable<int> query = numbers.Where(s => s > 50);
+            //foreach (int s in query)
+            //{
+            //    Console.WriteLine(s);
+            //}
+            #endregion
 
             var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-            IEnumerable<int> query = numbers.Where(s => s > 50);
+            IEnumerable<int> query = numbers.Select(s => s * 2);
             foreach (int s in query)
             {
                 Console.WriteLine(s);
