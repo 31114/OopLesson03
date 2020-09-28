@@ -60,8 +60,11 @@ namespace Chapter3
 
             var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-            IEnumerable<int> query = numbers.Select(s => s * 2);
-            foreach (int s in query)
+            var query = numbers.Select(s => s * 2).ToList<int>();
+
+            var list = query;
+
+            foreach (int s in list)
             {
                 Console.WriteLine(s);
             }
