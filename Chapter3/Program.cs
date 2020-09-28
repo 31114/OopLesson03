@@ -69,23 +69,34 @@ namespace Chapter3
             //    Console.WriteLine(s);
             //}
             #endregion
+            #region
+            //var names = new List<string>
+            //{
+            //    "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong", 
+            //};
+
+            //var line = Console.ReadLine();
+
+            //var result = names.FindIndex(s => s == line);
+
+            //try
+            //{
+            //    Console.WriteLine(names[result]);
+            //}
+            //catch
+            //{
+            //    Console.WriteLine(-1);
+            //}
+            #endregion
+
             var names = new List<string>
             {
-                "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong", 
+                "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong",
             };
 
-            var line = Console.ReadLine();
+            var result = names.Count(s => s.Contains("o"));
 
-            var result = names.FindIndex(s => s == line);
-
-            try
-            {
-                Console.WriteLine(names[result]);
-            }
-            catch
-            {
-                Console.WriteLine(-1);
-            }
+            Console.WriteLine(result);
         }
     }
 }
