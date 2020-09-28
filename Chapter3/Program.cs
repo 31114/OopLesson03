@@ -57,16 +57,34 @@ namespace Chapter3
             //    Console.WriteLine(s);
             //}
             #endregion
+            #region
+            //var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
 
-            var numbers = new List<int> { 12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48 };
+            //var query = numbers.Select(s => s * 2).ToList<int>();
 
-            var query = numbers.Select(s => s * 2).ToList<int>();
+            //var list = query;
 
-            var list = query;
-
-            foreach (int s in list)
+            //foreach (int s in list)
+            //{
+            //    Console.WriteLine(s);
+            //}
+            #endregion
+            var names = new List<string>
             {
-                Console.WriteLine(s);
+                "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong", 
+            };
+
+            var line = Console.ReadLine();
+
+            var result = names.FindIndex(s => s == line);
+
+            try
+            {
+                Console.WriteLine(names[result]);
+            }
+            catch
+            {
+                Console.WriteLine(-1);
             }
         }
     }
