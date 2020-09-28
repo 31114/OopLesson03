@@ -88,15 +88,27 @@ namespace Chapter3
             //    Console.WriteLine(-1);
             //}
             #endregion
+            #region
+            //var names = new List<string>
+            //{
+            //    "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong",
+            //};
 
+            //var result = names.Count(s => s.Contains("o"));
+
+            //Console.WriteLine(result);
+            #endregion
             var names = new List<string>
             {
                 "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong",
             };
 
-            var result = names.Count(s => s.Contains("o"));
+            var result = names.Where(s => s.Contains("o")).ToArray();
 
-            Console.WriteLine(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
