@@ -20,12 +20,28 @@ namespace Chapter4
         }
 
         //4-1-2
-        public int Is21Century { get; set; }
+        public bool Is21Century 
+        {
+            get {
+                return 2001 <= Year && Year <= 2100;
+                }
+        }
 
+        //4-1-3
         public YearMonth AddOneMonth()
         {
-            Month++;
-            return Month;
+            if (Month <= 12)
+            {
+                Month = 0;
+                Year++;
+            }
+            return new YearMonth(this.Year,this.Month + 1);
+        }
+
+        //4-1-4
+        public override string ToString()
+        {
+            return $"{Year}年{Month}月";
         }
     }
 }
