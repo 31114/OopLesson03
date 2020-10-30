@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800"
+        FontSize="16" FontFamily="Perfect DOS VGA 437 Win" Background="#FF0086E2" >
+    <Grid  Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
         
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Foreground="White" FontSize="16" Content="件名"/>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Foreground="White" FontSize="16" Content="To"/>
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Foreground="White" FontSize="16" Content="Cc"/>
+        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Foreground="White" FontSize="16" Content="Bcc"/>
+        <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top"
+               Foreground="White" FontSize="16" Content="本文"/>
+
+        <TextBox Grid.Column="1" Grid.Row="0" Width="600" Height="25" HorizontalAlignment="Center"
+                   Background="White"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Width="600" Height="25" HorizontalAlignment="Center"
+                   Background="White"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Width="600" Height="25" HorizontalAlignment="Center"
+                   Background="White"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Width="600" Height="25" HorizontalAlignment="Center"
+                   Background="White"/>
+        <TextBlock Grid.Column="1" Grid.Row="4" Width="600" Height="160" HorizontalAlignment="Center"
+                   Background="White"/>
+        <StackPanel Orientation="Horizontal" Margin="5" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Height="Auto" Width="Auto"  VerticalAlignment="Center">
+            <Button Content="Button" Width="75"/>
+            <Button Content="Button" Width="75"/>
+        </StackPanel>
+
+
     </Grid>
 </Window>
