@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace SendMailApp {
     public class Config {
@@ -57,6 +60,39 @@ namespace SendMailApp {
             this.Port = port;
             this.Ssl = ssl;
             return true;
+        }
+
+        public void Serialise()
+        {
+            var setting = new Config
+            {
+                Smtp = this.Smtp, 
+                MailAddress = this.MailAddress,
+                PassWord = this.PassWord,
+                Port = this.Port,
+                Ssl = this.Ssl,
+            };
+            using (var write = XmlWriter.Create("Config.xml"))
+            {
+                var serializer = new XmlSerializer(setting.GetType());
+                serializer.Serialize(write, setting);
+            }
+        }
+
+        public void DeSerialise()
+        {
+            using (var reader = XmlReader.Create("Config.xml"))
+            {
+                var serializer = new XmlSerializer(typeof(Config));
+                var setting = serializer.Deserialize(reader) as Config;
+                Console.WriteLine(setting);
+
+                this.Smtp = setting.Smtp;
+                this.MailAddress = setting.MailAddress;
+                this.PassWord = setting.PassWord;
+                this.Port = setting.Port;
+                this.Ssl = setting.Ssl;
+            }
         }
     }
 }

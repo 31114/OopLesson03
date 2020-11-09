@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        FontSize="16" FontFamily="Perfect DOS VGA 437 Win" Background="#FF0086E2" >
+        FontSize="16" FontFamily="Perfect DOS VGA 437 Win" Background="#FF0086E2" Closed="Window_Closed" Loaded="Window_Loaded" >
     <Grid  Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>

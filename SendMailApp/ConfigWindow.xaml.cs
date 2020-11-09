@@ -43,6 +43,8 @@ namespace SendMailApp
                 tbPassWord.Password,
                 int.Parse(tbPort.Text),
                 cbSsl.IsChecked ?? false);   //更新処理を呼び出す
+
+            
         }
         //OKボタン
         private void btOk_Click(object sender, RoutedEventArgs e)
@@ -62,7 +64,7 @@ namespace SendMailApp
             //MessageBox.Show("What's up man?");
 
 
-            Config cf = (Config.GetInstance()).getDefaultStatus();
+            Config cf = (Config.GetInstance());
 
             tbSmtp.Text = cf.Smtp;
             tbPort.Text = cf.Port.ToString();
