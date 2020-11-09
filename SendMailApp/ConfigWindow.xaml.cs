@@ -59,8 +59,16 @@ namespace SendMailApp
         //ロード時に一度だけ呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show("What's up man?");
 
 
+            Config cf = (Config.GetInstance()).getDefaultStatus();
+
+            tbSmtp.Text = cf.Smtp;
+            tbPort.Text = cf.Port.ToString();
+            tbSender.Text = tbUserName.Text = cf.MailAddress;
+            tbPassWord.Password = cf.PassWord;
+            cbSsl.IsChecked = cf.Ssl;
         }
     }
 }
