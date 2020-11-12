@@ -77,7 +77,6 @@ namespace SendMailApp
             configWindow.Show();  //表示
         }
 
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Config.GetInstance().DeSerialise();

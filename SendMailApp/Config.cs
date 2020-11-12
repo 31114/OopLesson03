@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -64,34 +65,71 @@ namespace SendMailApp {
 
         public void Serialise()
         {
-            var setting = new Config
+            try
             {
-                Smtp = this.Smtp, 
-                MailAddress = this.MailAddress,
-                PassWord = this.PassWord,
-                Port = this.Port,
-                Ssl = this.Ssl,
-            };
-            using (var write = XmlWriter.Create("Config.xml"))
+                var setting = new Config
+                {
+                    Smtp = this.Smtp,
+                    MailAddress = this.MailAddress,
+                    PassWord = this.PassWord,
+                    Port = this.Port,
+                    Ssl = this.Ssl,
+                };
+                using (var write = XmlWriter.Create("Config.xml"))
+                {
+                    var serializer = new XmlSerializer(setting.GetType());
+                    serializer.Serialize(write, setting);
+                }
+            }
+            catch (Exception)
             {
-                var serializer = new XmlSerializer(setting.GetType());
-                serializer.Serialize(write, setting);
+                System.Windows.MessageBox.Show("Serialise Error");
             }
         }
 
         public void DeSerialise()
         {
-            using (var reader = XmlReader.Create("Config.xml"))
+            try
             {
-                var serializer = new XmlSerializer(typeof(Config));
-                var setting = serializer.Deserialize(reader) as Config;
-                Console.WriteLine(setting);
+                using (var reader = XmlReader.Create("Config.xml"))
+                {
+                    var serializer = new XmlSerializer(typeof(Config));
+                    var setting = serializer.Deserialize(reader) as Config;
+                    Console.WriteLine(setting);
 
-                this.Smtp = setting.Smtp;
-                this.MailAddress = setting.MailAddress;
-                this.PassWord = setting.PassWord;
-                this.Port = setting.Port;
-                this.Ssl = setting.Ssl;
+                    this.Smtp = setting.Smtp;
+                    this.MailAddress = setting.MailAddress;
+                    this.PassWord = setting.PassWord;
+                    this.Port = setting.Port;
+                    this.Ssl = setting.Ssl;
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                //ConfigWindow表示
+                ConfigWindow configWindow = new ConfigWindow();//設定画面のインスタンスを生成
+                configWindow.Show();  //表示
+                
+                //XMLファイル作成
+                Config cf = (Config.GetInstance()).getDefaultStatus();
+
+                var setting = new Config
+                {
+                    Smtp = cf.Smtp,
+                    MailAddress = cf.MailAddress,
+                    PassWord = cf.PassWord,
+                    Port = cf.Port,
+                    Ssl = cf.Ssl,
+                };
+                using (var write = XmlWriter.Create("Config.xml"))
+                {
+                    var serializer = new XmlSerializer(setting.GetType());
+                    serializer.Serialize(write, setting);
+                }
+            }
+            catch(Exception)
+            {
+                System.Windows.MessageBox.Show("DeSerialise Error");
             }
         }
     }

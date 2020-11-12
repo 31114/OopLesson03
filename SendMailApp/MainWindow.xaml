@@ -49,7 +49,7 @@
             <Button x:Name="btOk" Content="Send" Width="75" Height="25" Click="btOk_Click"/>
         </StackPanel>
 
-        <Button x:Name="btConfig" Grid.Row="5" Margin="8" Content="設定" Click="btConfig_Click"/>
+        <Button x:Name="btConfig" Grid.Row="5" Width="75" Height="25" Margin="0,0,0,0" Content="Config" Click="btConfig_Click"/>
 
     </Grid>
 </Window>

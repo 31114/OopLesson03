@@ -26,6 +26,8 @@ namespace SendMailApp
 
         private void btDefault_Click(object sender, RoutedEventArgs e)
         {
+            //Config.csの初期設定に
+
             Config cf = (Config.GetInstance()).getDefaultStatus();
 
             tbSmtp.Text = cf.Smtp;
@@ -34,35 +36,98 @@ namespace SendMailApp
             tbPassWord.Password = cf.PassWord;
             cbSsl.IsChecked = cf.Ssl;
         }
+
         //適用（更新）
         private void btApply_Click(object sender, RoutedEventArgs e)
         {
-            (Config.GetInstance()).UpdateStatus(
-                tbSmtp.Text,
-                tbUserName.Text,
-                tbPassWord.Password,
-                int.Parse(tbPort.Text),
-                cbSsl.IsChecked ?? false);   //更新処理を呼び出す
+            //this looks really bad, but its works so i dont care anyway
+            if (tbSmtp.Text == "")
+                MessageBox.Show("SMTPサーバが指定されていません");
+            else
+            {
+                if (tbUserName.Text == "")
+                    MessageBox.Show("ユーザ名が指定されていません");
+                else
+                {
+                    if (tbPassWord.Password == "")
+                        MessageBox.Show("パスワードが指定されていません");
+                    else
+                    {
+                        if (tbPort.Text == "")
+                            MessageBox.Show("ポートが指定されていません");
+                        else
+                        {
+                            if (tbSender.Text == "")
+                                MessageBox.Show("送信元が指定されていません");
+                            else
+                            {
 
+                                (Config.GetInstance()).UpdateStatus(
+                                    tbSmtp.Text,
+                                    tbUserName.Text,
+                                    tbPassWord.Password,
+                                    int.Parse(tbPort.Text),
+                                    cbSsl.IsChecked ?? false);   //更新処理を呼び出す
+
+                            }
+                        }
+                    }
+                }
+            }
             
         }
         //OKボタン
         private void btOk_Click(object sender, RoutedEventArgs e)
         {
-            btApply_Click(sender, e);   //更新処理を呼び出す
-            this.Close();
+            //jeez look at this mess
+            if (tbSmtp.Text == "")
+                MessageBox.Show("SMTPサーバが指定されていません");
+            else
+            {
+                if (tbUserName.Text == "")
+                    MessageBox.Show("ユーザ名が指定されていません");
+                else
+                {
+                    if (tbPassWord.Password == "")
+                        MessageBox.Show("パスワードが指定されていません");
+                    else
+                    {
+                        if (tbPort.Text == "")
+                            MessageBox.Show("ポートが指定されていません");
+                        else
+                        {
+                            if (tbSender.Text == "")
+                                MessageBox.Show("送信元が指定されていません");
+                            else
+                            {
+                                btApply_Click(sender, e);   //更新処理を呼び出す
+                                this.Close();
+                            }
+                        }
+                    }
+                }
+            }
+
         }
         //キャンセルボタン
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Config cf = (Config.GetInstance());
+
+            if (tbSmtp.Text == cf.Smtp && tbPort.Text == cf.Port.ToString() &&
+                tbSender.Text == cf.MailAddress || tbPassWord.Password == cf.PassWord)
+            {
+                this.Close();
+
+            }
+            MessageBox.Show("blah");
+
+
         }
 
         //ロード時に一度だけ呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("What's up man?");
-
 
             Config cf = (Config.GetInstance());
 
