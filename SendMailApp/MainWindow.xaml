@@ -11,6 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
             <ColumnDefinition Width="*"/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -20,7 +21,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        
+
         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
                Foreground="White" FontSize="16" Content="件名"/>
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -32,17 +33,17 @@
         <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top"
                Foreground="White" FontSize="16" Content="本文" Margin="0,15,0,0"/>
 
-        <TextBox x:Name="tbTitle" Grid.Column="1" Grid.Row="0" Width="650" Height="25" 
-                 HorizontalAlignment="Center" Background="White"/>
-        <TextBox x:Name="tbTo" Grid.Column="1" Grid.Row="1" Width="650" Height="25" 
-                 HorizontalAlignment="Center" Background="White"/>
-        <TextBox x:Name="tbCc" Grid.Column="1" Grid.Row="2" Width="650" Height="25" 
-                 HorizontalAlignment="Center" Background="White"/>
-        <TextBox x:Name="tbBcc" Grid.Column="1" Grid.Row="3" Width="650" Height="25" 
-                 HorizontalAlignment="Center" Background="White"/>
-        <TextBox x:Name="tbBody" Grid.Column="1" Grid.Row="4" Width="650" Height="160" 
-                 HorizontalAlignment="Center" Background="White"/>
-        
+        <TextBox x:Name="tbTitle" Grid.Column="1" Grid.Row="0" Width="350" Height="25" 
+                 HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
+        <TextBox x:Name="tbTo" Grid.Column="1" Grid.Row="1" Width="350" Height="25" 
+                 HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
+        <TextBox x:Name="tbCc" Grid.Column="1" Grid.Row="2" Width="350" Height="25" 
+                 HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
+        <TextBox x:Name="tbBcc" Grid.Column="1" Grid.Row="3" Width="350" Height="25" 
+                 HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
+        <TextBox x:Name="tbBody" Grid.Column="1" Grid.Row="4" Width="682" Height="170" 
+                 HorizontalAlignment="Left" Margin="10,14,0,15" Background="White"/>
+
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" 
                     Height="Auto" Width="Auto"  VerticalAlignment="Center" Margin="0,0,21,0">
             <Button x:Name="btCancel" Content="Cancel" Width="75" Height="25" Margin="0,0,5,0" Click="btCancel_Click" />
@@ -50,6 +51,14 @@
         </StackPanel>
 
         <Button x:Name="btConfig" Grid.Row="5" Width="75" Height="25" Margin="0,0,0,0" Content="Config" Click="btConfig_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Height="160" Grid.RowSpan="4" VerticalAlignment="Top" Width="337">
+            <StackPanel Margin="0,0,0,0" Width="80" Height="Auto">
+                <Label  Content="添付ファイル" Foreground="White"/>
+                <Button Height="25" Margin="0,0,0,5" Content="Add"/>
+                <Button VerticalAlignment="Bottom" Height="25" Content="Remove"/>
+            </StackPanel>
+            <TextBox Width="236" HorizontalAlignment="Right" Margin="10,0,0,0" Background="White"/>
+        </StackPanel>
 
     </Grid>
 </Window>

@@ -77,7 +77,7 @@
             <StackPanel Grid.Column="1" Orientation="Horizontal" >
                 <Button x:Name="btOk" Content="Ok" Width="75" Height="25" Margin="10" Click="btOk_Click"/>
                 <Button x:Name="btCancel" Content="Cancel" Width="75" Height="25" Margin="10" Click="btCancel_Click"/>
-                <Button x:Name="btApply" Content="Accept" Width="75" Height="25" Margin="10" Click="btApply_Click"/>
+                <Button x:Name="btApply" Content="Apply" Width="75" Height="25" Margin="10" Click="btApply_Click"/>
             </StackPanel>
         </Grid>
 

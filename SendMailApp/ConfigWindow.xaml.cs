@@ -115,14 +115,24 @@ namespace SendMailApp
             Config cf = (Config.GetInstance());
 
             if (tbSmtp.Text == cf.Smtp && tbPort.Text == cf.Port.ToString() &&
-                tbSender.Text == cf.MailAddress || tbPassWord.Password == cf.PassWord)
+                tbSender.Text == cf.MailAddress && tbPassWord.Password == cf.PassWord)
             {
                 this.Close();
-
             }
-            MessageBox.Show("blah");
+            else
+            {
+                //MessageBox.Show("blah");
 
+                MessageBoxResult dRet = MessageBox.Show("変更を保存せず閉じますか？", " ", MessageBoxButton.YesNo);
 
+                if (dRet == MessageBoxResult.Yes)
+                {
+                    this.Close();
+                }
+                else if (dRet == MessageBoxResult.No) //「いいえ」が選択された時
+                {
+                }
+            }
         }
 
         //ロード時に一度だけ呼び出される
