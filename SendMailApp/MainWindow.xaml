@@ -36,7 +36,7 @@
         <TextBox x:Name="tbTitle" Grid.Column="1" Grid.Row="0" Width="350" Height="25" 
                  HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
         <TextBox x:Name="tbTo" Grid.Column="1" Grid.Row="1" Width="350" Height="25" 
-                 HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
+                 HorizontalAlignment="Left" Margin="10,8,0,8" Background="White"/>
         <TextBox x:Name="tbCc" Grid.Column="1" Grid.Row="2" Width="350" Height="25" 
                  HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
         <TextBox x:Name="tbBcc" Grid.Column="1" Grid.Row="3" Width="350" Height="25" 
@@ -54,10 +54,10 @@
         <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Height="160" Grid.RowSpan="4" VerticalAlignment="Top" Width="337">
             <StackPanel Margin="0,0,0,0" Width="80" Height="Auto">
                 <Label  Content="添付ファイル" Foreground="White"/>
-                <Button Height="25" Margin="0,0,0,5" Content="Add"/>
-                <Button VerticalAlignment="Bottom" Height="25" Content="Remove"/>
+                <Button x:Name="btAdd" Height="25" Margin="0,0,0,5" Content="Add" Click="btAdd_Click"/>
+                <Button x:Name="btRemove" VerticalAlignment="Bottom" Height="25" Content="Remove" Click="btRemove_Click"/>
             </StackPanel>
-            <TextBox Width="236" HorizontalAlignment="Right" Margin="10,0,0,0" Background="White"/>
+            <ListBox x:Name="lbFiles" Width="247"/>
         </StackPanel>
 
     </Grid>

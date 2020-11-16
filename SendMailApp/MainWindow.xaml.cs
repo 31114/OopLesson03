@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,12 +15,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace SendMailApp
 {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
 
@@ -27,6 +31,7 @@ namespace SendMailApp
 
         public MainWindow()
         {
+
             InitializeComponent();
             sc.SendCompleted += Sc_SendCompleted;
         }
@@ -57,6 +62,20 @@ namespace SendMailApp
                 sc.EnableSsl = true;
                 sc.Credentials = new NetworkCredential("ojsinfosys01@gmail.com" , "ojsInfosys2020");
 
+                //添付ファイル
+                System.Net.Mail.Attachment attachment;
+                foreach (var item in lbFiles.Items)
+                {
+                    attachment = new System.Net.Mail.Attachment(item.ToString());
+                    //attachment = new System.Net.Mail.Attachment(datapath+jpgname);//添付ファイルのパスを指定する
+
+                    attachment.ContentType = new System.Net.Mime.ContentType("image/jpeg");
+                    //Attachmentsに追加する
+                    msg.Attachments.Add(attachment);
+
+                }
+
+
                 sc.SendMailAsync(msg);
             }
             catch (Exception ex)
@@ -85,6 +104,27 @@ namespace SendMailApp
         private void Window_Closed(object sender, EventArgs e)
         {
             Config.GetInstance().Serialise();
+        }
+
+        private void btAdd_Click(object sender, RoutedEventArgs e)
+        {
+            // ダイアログのインスタンスを生成
+            var dialog = new OpenFileDialog();
+
+            // ファイルの種類を設定
+            dialog.Filter = "全てのファイル (*.*)|*.*";
+
+            // ダイアログを表示する
+            if (dialog.ShowDialog() == true)
+            {
+                // 選択されたファイル名 (ファイルパス) をメッセージボックスに表示
+                lbFiles.Items.Add(dialog.FileName);
+            }
+        }
+
+        private void btRemove_Click(object sender, RoutedEventArgs e)
+        {
+            lbFiles.Items.Remove(lbFiles.SelectedItem);
         }
     }
 }
