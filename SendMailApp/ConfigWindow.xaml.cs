@@ -76,6 +76,7 @@ namespace SendMailApp
             }
             
         }
+
         //OKボタン
         private void btOk_Click(object sender, RoutedEventArgs e)
         {
@@ -109,6 +110,7 @@ namespace SendMailApp
             }
 
         }
+
         //キャンセルボタン
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {

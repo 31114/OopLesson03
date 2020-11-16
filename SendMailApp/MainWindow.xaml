@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="Main" Height="450" Width="800"
         FontSize="16" FontFamily="Perfect DOS VGA 437 Win" Background="#FF0086E2" Closed="Window_Closed" Loaded="Window_Loaded" >
     <Grid  Margin="10">
         <Grid.ColumnDefinitions>
@@ -33,14 +33,14 @@
         <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top"
                Foreground="White" FontSize="16" Content="本文" Margin="0,15,0,0"/>
 
-        <TextBox x:Name="tbTitle" Grid.Column="1" Grid.Row="0" Width="350" Height="25" 
-                 HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
-        <TextBox x:Name="tbTo" Grid.Column="1" Grid.Row="1" Width="350" Height="25" 
-                 HorizontalAlignment="Left" Margin="10,8,0,8" Background="White"/>
-        <TextBox x:Name="tbCc" Grid.Column="1" Grid.Row="2" Width="350" Height="25" 
-                 HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
-        <TextBox x:Name="tbBcc" Grid.Column="1" Grid.Row="3" Width="350" Height="25" 
-                 HorizontalAlignment="Left" Margin="10,0,0,0" Background="White"/>
+        <TextBox x:Name="tbTitle" Grid.Column="1" Grid.Row="0" Width="330" Height="25" 
+                 HorizontalAlignment="Left" Margin="10,8,0,7" Background="White"/>
+        <TextBox x:Name="tbTo" Grid.Column="1" Grid.Row="1" Width="330" Height="25" 
+                 HorizontalAlignment="Left" Margin="10,8,0,7" Background="White"/>
+        <TextBox x:Name="tbCc" Grid.Column="1" Grid.Row="2" Width="330" Height="25" 
+                 HorizontalAlignment="Left" Margin="10,8,0,7" Background="White"/>
+        <TextBox x:Name="tbBcc" Grid.Column="1" Grid.Row="3" Width="330" Height="25" 
+                 HorizontalAlignment="Left" Margin="10,8,0,7" Background="White"/>
         <TextBox x:Name="tbBody" Grid.Column="1" Grid.Row="4" Width="682" Height="170" 
                  HorizontalAlignment="Left" Margin="10,14,0,15" Background="White"/>
 
@@ -51,13 +51,13 @@
         </StackPanel>
 
         <Button x:Name="btConfig" Grid.Row="5" Width="75" Height="25" Margin="0,0,0,0" Content="Config" Click="btConfig_Click"/>
-        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Height="160" Grid.RowSpan="4" VerticalAlignment="Top" Width="337">
-            <StackPanel Margin="0,0,0,0" Width="80" Height="Auto">
+        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Height="160" Grid.RowSpan="4" VerticalAlignment="Top" Width="340">
+            <StackPanel Margin="0,0,5,0" Width="90" Height="Auto">
                 <Label  Content="添付ファイル" Foreground="White"/>
                 <Button x:Name="btAdd" Height="25" Margin="0,0,0,5" Content="Add" Click="btAdd_Click"/>
                 <Button x:Name="btRemove" VerticalAlignment="Bottom" Height="25" Content="Remove" Click="btRemove_Click"/>
             </StackPanel>
-            <ListBox x:Name="lbFiles" Width="247"/>
+            <ListBox x:Name="lbFiles" Width="235"/>
         </StackPanel>
 
     </Grid>
