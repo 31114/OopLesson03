@@ -50,17 +50,27 @@ namespace SendMailApp
 
         private void btOk_Click(object sender, RoutedEventArgs e)
         {
+            Config cf = Config.GetInstance();
             try
             {
-                MailMessage msg = new MailMessage("ojsinfosys01@gmail.com" , tbTo.Text);
+                MailMessage msg = new MailMessage(cf.MailAddress , tbTo.Text);
+
+                if (tbCc.Text != "")
+                {
+                    msg.CC.Add(tbCc.Text);
+                }
+                if (tbBcc.Text != "")
+                {
+                    msg.Bcc.Add(tbBcc.Text);
+                }
 
                 msg.Subject = tbTitle.Text; //件名
                 msg.Body = tbBody.Text; //本文
 
-                sc.Host = "smtp.gmail.com"; //SMTPサーバの設定
-                sc.Port = 587;
-                sc.EnableSsl = true;
-                sc.Credentials = new NetworkCredential("ojsinfosys01@gmail.com" , "ojsInfosys2020");
+                sc.Host = cf.Smtp; //SMTPサーバの設定
+                sc.Port = cf.Port;
+                sc.EnableSsl = cf.Ssl;
+                sc.Credentials = new NetworkCredential(cf.MailAddress , cf.PassWord);
 
                 //添付ファイル
                 System.Net.Mail.Attachment attachment;

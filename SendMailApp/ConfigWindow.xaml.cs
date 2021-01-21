@@ -62,7 +62,7 @@ namespace SendMailApp
                             else
                             {
 
-                                (Config.GetInstance()).UpdateStatus(
+                                Config.GetInstance().UpdateStatus(
                                     tbSmtp.Text,
                                     tbUserName.Text,
                                     tbPassWord.Password,
@@ -83,31 +83,8 @@ namespace SendMailApp
             //jeez look at this mess
             if (tbSmtp.Text == "")
                 MessageBox.Show("SMTPサーバが指定されていません");
-            else
-            {
-                if (tbUserName.Text == "")
-                    MessageBox.Show("ユーザ名が指定されていません");
-                else
-                {
-                    if (tbPassWord.Password == "")
-                        MessageBox.Show("パスワードが指定されていません");
-                    else
-                    {
-                        if (tbPort.Text == "")
-                            MessageBox.Show("ポートが指定されていません");
-                        else
-                        {
-                            if (tbSender.Text == "")
-                                MessageBox.Show("送信元が指定されていません");
-                            else
-                            {
-                                btApply_Click(sender, e);   //更新処理を呼び出す
-                                this.Close();
-                            }
-                        }
-                    }
-                }
-            }
+            btApply_Click(sender, e);
+            this.Close();
 
         }
 

@@ -95,7 +95,6 @@ namespace SendMailApp {
                 {
                     var serializer = new XmlSerializer(typeof(Config));
                     var setting = serializer.Deserialize(reader) as Config;
-                    Console.WriteLine(setting);
 
                     this.Smtp = setting.Smtp;
                     this.MailAddress = setting.MailAddress;
